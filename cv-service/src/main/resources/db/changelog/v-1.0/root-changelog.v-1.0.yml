@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - include:
+      file: create_cv_documents_table.sql
+      relativeToChangelogFile: true
+  - include:
+      file: create_certificates_table.sql
+      relativeToChangelogFile: true
+  - include:
+      file: create_languages_table.sql
+      relativeToChangelogFile: true
+  - include:
+      file: create_skills_table.sql
+      relativeToChangelogFile: true
+  - include:
+      file: processed_events_table.sql
+      relativeToChangelogFile: true
+  - include:
+      file: insert_data.sql
+      relativeToChangelogFile: true

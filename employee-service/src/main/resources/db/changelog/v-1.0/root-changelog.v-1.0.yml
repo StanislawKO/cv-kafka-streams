@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - include:
+      file: create_employees_table.sql
+      relativeToChangelogFile: true
+  - include:
+      file: create_outbox_table.sql
+      relativeToChangelogFile: true
+  - include:
+      file: insert_data.sql
+      relativeToChangelogFile: true

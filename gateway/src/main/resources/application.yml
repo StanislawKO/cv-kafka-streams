@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: employee-service
+          uri: lb://EMPLOYEE-SERVICE
+          predicates:
+            - Path=/employee/**
+
+        - id: cv-service
+          uri: lb://CV-SERVICE
+          predicates:
+            - Path=/cv/**
+
+server:
+  port: ${GATEWAY_PORT}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL}
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.security: DEBUG

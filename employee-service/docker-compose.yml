@@ -1,0 +1,19 @@
+services:
+  db:
+    user: root
+    image: postgres:17-alpine
+    container_name: employees-db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - '${DB_PORT}:5432'
+    volumes:
+      - employees-db:/var/lib/postgresql
+    command: [ "postgres", "-c", "wal_level=logical" ]
+
+volumes:
+  employees-db:
+    driver: local
