@@ -3,6 +3,7 @@ package com.stas_kozh;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.stas_kozh.config.DisableSecurityConfig;
 import com.stas_kozh.model.Outbox;
 import io.debezium.testing.testcontainers.ConnectorConfiguration;
 import io.debezium.testing.testcontainers.DebeziumContainer;
@@ -24,6 +25,7 @@ import org.springframework.kafka.listener.MessageListener;
 import org.springframework.kafka.support.serializer.ErrorHandlingDeserializer;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.KafkaContainer;
@@ -45,6 +47,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @DirtiesContext
 @ActiveProfiles("test")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@ContextConfiguration(classes = {DisableSecurityConfig.class})
 @SpringBootTest()
 public class CdcTest {
     public static final String EMPLOYEES_DBZ_CONNECTOR = "employees-dbz-connector";

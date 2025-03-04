@@ -1,6 +1,11 @@
 spring:
   application:
     name: EMPLOYEE-SERVICE
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9080/realms/cv-application
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yml
   config:
